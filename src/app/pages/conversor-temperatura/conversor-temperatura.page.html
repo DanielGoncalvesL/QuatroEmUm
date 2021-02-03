@@ -1,9 +1,70 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>conversorTemperatura</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Conversor de Temperatura</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Conversor de Temperatura </ion-title>
+        </ion-toolbar>
+    </ion-header>
 
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>De:</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="stacked">Escala</ion-label>
+                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaDe">
+                    <ion-select-option value="c">Celsius (°C)</ion-select-option>
+                    <ion-select-option value="f">Fahrenheit (°F)</ion-select-option>
+                    <ion-select-option value="k">Kelvin</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Temperatura</ion-label>
+                <ion-input clearInput type="number" placeholder="Informe a temperatura" required [(ngModel)]="temperaturaDe"></ion-input>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Para: </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="stacked">Escala</ion-label>
+                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaPara">
+                    <ion-select-option value="c">Celsius (°C)</ion-select-option>
+                    <ion-select-option value="f">Fahrenheit (°F)</ion-select-option>
+                    <ion-select-option value="k">Kelvin</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Temperatura</ion-label>
+                <ion-input readonly clearInput type="number" [(ngModel)]="temperaturaPara"></ion-input>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="warning" (click)="limpar()">
+                    Limpar
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="block" color="success" (click)="converter()">
+                    Converter
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

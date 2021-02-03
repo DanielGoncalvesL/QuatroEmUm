@@ -1,9 +1,118 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>calculadora</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="inicio"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Calculadora</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Calculadora</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
+    <div id="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-input type="text" value="0" readonly id="display" [(ngModel)]="numeroDisplay"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="perCent()">%</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="square()">√</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="pow()">x²</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="byOne()">¹/x</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="deleteCurrent()">CE</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="reiniciar()">C</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="backSpace()">
+                        <=</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="definirOperacao('/')">/</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('7')">7</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('8')">8</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('9')">9</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="definirOperacao('*')">*</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('4')">4</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('5')">5</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('6')">6</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="definirOperacao('-')">-</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('1')">1</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('2')">2</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('3')">3</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="definirOperacao('+')">+</ion-button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="opposite()">±</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="secondary" expand="block" (click)="registrarNumero('0')">0</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="ponto()">,</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="medium" expand="block" (click)="calcular()">=</ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </div>
 </ion-content>
