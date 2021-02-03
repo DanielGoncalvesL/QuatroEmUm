@@ -21,10 +21,8 @@
         <ion-card-content>
             <ion-item>
                 <ion-label position="stacked">Escala</ion-label>
-                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaDe">
-                    <ion-select-option value="c">Celsius (°C)</ion-select-option>
-                    <ion-select-option value="f">Fahrenheit (°F)</ion-select-option>
-                    <ion-select-option value="k">Kelvin</ion-select-option>
+                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaDe" (ionChange)="preencherEscalaPara($event)">
+                    <ion-select-option *ngFor="let escala of escalasDe" value="{{escala.valor}}">{{escala.descricao}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
@@ -40,10 +38,8 @@
         <ion-card-content>
             <ion-item>
                 <ion-label position="stacked">Escala</ion-label>
-                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaPara">
-                    <ion-select-option value="c">Celsius (°C)</ion-select-option>
-                    <ion-select-option value="f">Fahrenheit (°F)</ion-select-option>
-                    <ion-select-option value="k">Kelvin</ion-select-option>
+                <ion-select value="" okText="Confirmar" cancelText="Cancelar" placeholder="Selecione uma opção" required [(ngModel)]="escalaPara" required [disabled]="disabledEscalaPara">
+                    <ion-select-option *ngFor="let escala of escalasPara" value="{{escala.valor}}">{{escala.descricao}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>

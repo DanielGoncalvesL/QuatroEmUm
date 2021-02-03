@@ -7,12 +7,26 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./conversor-temperatura.page.scss'],
 })
 export class ConversorTemperaturaPage implements OnInit {
+
+  escalas = [
+    {"valor": "c", "descricao": "Celsius(°C)"},
+    {"valor": "f", "descricao": "Fahrenheit(°F)"},
+    {"valor": "k", "descricao": "Kelvin(K)"},
+  ];
+
   escalaDe: string;
   temperaturaDe: number;
   escalaPara: string;
   temperaturaPara: number;
 
-  constructor(public alertController: AlertController) { }
+  disabledEscalaPara: boolean;
+  escalasDe: any;
+  escalasPara: any;
+
+  constructor(public alertController: AlertController) { 
+    this.disabledEscalaPara = true;
+    this.escalasDe = this.escalas;
+  }
 
   async converter() {
     if (this.escalaDe === this.escalaPara) {
@@ -93,4 +107,11 @@ export class ConversorTemperaturaPage implements OnInit {
   ngOnInit() {
   }
 
+  async preencherEscalaPara(event: any){
+    this.escalaPara = "";
+    this.disabledEscalaPara = false;
+    this.escalasPara = this.escalas.filter((item) => {
+      return item.valor != event.detail.value;
+    });
+  }
 }
